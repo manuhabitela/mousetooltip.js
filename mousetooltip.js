@@ -5,6 +5,7 @@
 			opts["3d"] = opts["3d"] !== undefined ? opts["3d"] : false;
 			opts["offset"] = opts["offset"] !== undefined ? opts["offset"] : { x: 10, y: 10 };
 			self.opts = opts;
+			$('#mouse-tooltip').remove();
 			self.$tooltip = $('body').append('<div id="mouse-tooltip"></div>').find('#mouse-tooltip').first();
 			self.hide();
 		},
@@ -38,7 +39,7 @@
 			ttLeft = ttLeft + xOffset + "px";
 			ttTop = ttTop + yOffset + "px";
 			var pos = {};
-			if (Modernizr && (Modernizr.csstransforms3d || Modernizr.csstransforms)) {
+			if (window.Modernizr !== undefined && (Modernizr.csstransforms3d || Modernizr.csstransforms)) {
 				pos[Modernizr.prefixed('transform')] = "translateX(" + ttLeft + ") translateY(" + ttTop + ")";
 				pos['transform'] = "translateX(" + ttLeft + ") translateY(" + ttTop + ")";
 				if (Modernizr.csstransforms3d && self.opts["3d"]) {
