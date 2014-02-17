@@ -15,15 +15,15 @@
 				tooltipId: 'mouse-tooltip',
 				contentAttr: 'data-tooltip',
 				contentClass: 'with-tooltip',
-				handleMouseActions: true
+				mouseActionsHandler: self.onMouseAction
 			}, opts || {});
 
 			$('#' + self.opts.tooltipId).remove();
 			self.$tooltip = $('body').append('<div id="' + self.opts.tooltipId + '" class="' + self.opts.tooltipClass + '"></div>').find('#' + self.opts.tooltipId).first();
 			self.hide();
 
-			if (self.opts.handleMouseActions)
-				$('body').on('mouseover click mouseout', '.' + self.opts.contentClass, self.onMouseAction);
+			if (self.opts.mouseActionsHandler)
+				$('body').on('mouseover click mouseout', '.' + self.opts.contentClass, self.opts.mouseActionsHandler);
 		},
 		show: function(html) {
 			self.$tooltip.html(html);
@@ -66,10 +66,9 @@
 				pos = { left: ttLeft, top: ttTop };
 			self.$tooltip.css(pos);
 		},
-		onMouseAction: function(e, content) {
+		onMouseAction: function(e) {
 			$target = $(e.currentTarget);
-			if (!content)
-				content = $target.attr(self.opts.contentAttr) || $target.find('[' + self.opts.contentAttr + ']').attr(self.opts.contentAttr);
+			var content = $target.attr(self.opts.contentAttr) || $target.find('[' + self.opts.contentAttr + ']').attr(self.opts.contentAttr);
 			if (e.type == "mouseover")
 				self.show( content );
 			else if (e.type == "click")
