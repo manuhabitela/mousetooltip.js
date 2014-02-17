@@ -25,8 +25,11 @@
 			if (self.opts.mouseActionsHandler)
 				$('body').on('mouseover click mouseout', '.' + self.opts.contentClass, self.opts.mouseActionsHandler);
 		},
-		show: function(html) {
+		content: function(html) {
 			self.$tooltip.html(html);
+		},
+		show: function(html) {
+			self.content(html);
 			self.$tooltip.removeClass(self.opts.tooltipClass + '--hidden');
 			$(document).on('mousemove.tooltip', self._stickToMouse);
 		},
@@ -72,7 +75,7 @@
 			if (e.type == "mouseover")
 				self.show( content );
 			else if (e.type == "click")
-				self.html( content );
+				self.content( content );
 			else
 				self.hide();
 		}
