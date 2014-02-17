@@ -81,5 +81,4 @@
 		}
 	};
 	var self = window.MouseTooltip;
-	self.init();
 })(window, document, jQuery);
