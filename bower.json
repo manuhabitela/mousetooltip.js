@@ -1,0 +1,8 @@
+{
+	"name": "mousetooltip",
+	"version": "0.2.0",
+	"main": ["mousetooltip.js", "mousetooltip.css"],
+	"dependencies": {
+		"jquery": "*"
+	}
+}
