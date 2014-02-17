@@ -27,8 +27,15 @@ MouseTooltip.init();
 
 <!-- works too! -->
 <p class="with-tooltip">
-    What'up. <span data-tooltip="I have the content, but it will appear when the mouse is over the whole paragraph, since it has the with-tooltip class and I don't.">And stuff.</span>
+    What'up.
+    <span data-tooltip="I have the content, but it will appear when the mouse
+    is over the whole paragraph, since it has the with-tooltip class and I don't.">
+        And stuff.
+    </span>
 </p>
+
+<!-- tired of text? Go with HTML -->
+<div class="with-tooltip" data-tooltip="<h1>Html works too!</h1>"></div>
 ```
 
 *Voilà*, the tooltips are set and will show and hide according to the mouse.
